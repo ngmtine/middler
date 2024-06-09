@@ -10,7 +10,8 @@
             "env": {
                 "TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json"
             },
-            "sourceMaps": true
+            "sourceMaps": true,
+            "skipFiles": ["${workspaceFolder}/node_modules/**/*.js", "<node_internals>/**/*.js"]
         },
         {
             "type": "node",
@@ -21,7 +22,8 @@
             "env": {
                 "TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json"
             },
-            "sourceMaps": true
+            "sourceMaps": true,
+            "skipFiles": ["${workspaceFolder}/node_modules/**/*.js", "<node_internals>/**/*.js"]
         }
     ]
 }
