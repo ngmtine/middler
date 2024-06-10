@@ -1,6 +1,12 @@
+// @ts-ignore
+import mrkdwn from "html-to-mrkdwn";
+
 // HTMLDivElementをMarkdownに変換
 export const html2markdown = (div: Node): string => {
-    return processNode(div);
+    // return processNode(div);
+    // @ts-ignore
+    const result = mrkdwn(div.innerHTML);
+    return result.text;
 };
 
 // ノードを再帰的に処理する関数
