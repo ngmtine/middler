@@ -27,7 +27,7 @@ const processNode = (node: Node): string => {
                 out += processChildren(elm) + "\n\n";
                 break;
             case "CODE":
-                out += `\`${elm.textContent}\``;
+                out += ` \`${elm.textContent}\` `;
                 break;
             case "STRONG":
                 out += `*${elm.textContent}*`;
