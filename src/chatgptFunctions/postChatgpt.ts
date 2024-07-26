@@ -16,7 +16,7 @@ export const postChatgpt = async ({ page, text }: { page: Page; text: string }) 
     }, text);
 
     // 送信ボタン押下
-    const button = await page.waitForSelector("main form button[data-testid='fruitjuice-send-button']", { timeout: 1000 * 10 });
+    const button = await page.waitForSelector("main form button[data-testid='send-button']", { timeout: 1000 * 10 });
     if (!button) throw new Error("sendbutton undefined!!");
     await button.click();
 };
