@@ -6,12 +6,13 @@ export const postChatgpt = async ({ page, text }: { page: Page; text: string }) 
     page.bringToFront();
 
     // 入力欄要素取得
-    const inputArea = await page.waitForSelector("main form textarea");
+    const inputArea = await page.waitForSelector("#prompt-textarea");
     if (!inputArea) throw new Error("inputArea undefined!!");
 
     // 入力欄要素にテキスト入力
     await inputArea.evaluate((elm, val) => {
-        elm.value = val;
+        // domにテキストを直接挿入
+        elm.innerHTML = `<p>${val}</p>`;
         elm.dispatchEvent(new Event("input", { bubbles: true }));
     }, text);
 

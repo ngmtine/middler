@@ -36,7 +36,7 @@ export const wait4answer = async ({ page }: { page: Page }): Promise<Returns> =>
             page.bringToFront();
 
             // 最後の回答の要素を取得
-            const messageContentList = await page.$$("div[data-testid]");
+            const messageContentList = await page.$$("article[data-testid]");
             const lastMessageSection = messageContentList.at(-1);
             if (!lastMessageSection) continue;
 
@@ -45,7 +45,7 @@ export const wait4answer = async ({ page }: { page: Page }): Promise<Returns> =>
 
             // HTMLDivElementに変換
             const doc = text2HTMLDocument(htmlText);
-            const div = doc.getElementsByTagName("div")?.[0];
+            const div = doc.getElementsByTagName("article")?.[0];
             if (!div) continue;
 
             // 前回の回答を取得した場合はループ継続
