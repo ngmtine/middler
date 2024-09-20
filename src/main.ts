@@ -12,11 +12,18 @@ const app = new Hono();
 
 let chatgptPage: Page;
 (async () => {
-    chatgptPage = await startBrowser(env.chatgptUrl);
+    try {
+        chatgptPage = await startBrowser(env.chatgptUrl);
+    } catch (error) {
+        console.error(error);
+    }
 })();
 
 app.post("/api/chat", async (c) => {
     try {
+        // ページオブジェクトが取得できていない場合はエラー
+        if (!chatgptPage) throw new Error("chatgptPage undefined!!");
+
         // 質問取得
         const { text } = await c.req.json();
         if (!text) return c.json({ error: "text undefined!!" }, 200);
