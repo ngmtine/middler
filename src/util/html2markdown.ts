@@ -51,6 +51,8 @@ const processNode = (node: Node): string => {
                 out += `###### ${elm.textContent}\n`;
                 break;
             case "PRE": {
+                // 「コードをコピーする」を削除
+                for (const button of elm.querySelectorAll("button")) button.remove();
                 const lang = elm.querySelector("span")?.textContent ?? "";
                 const code = elm.querySelector("code")?.textContent ?? "";
                 out += `\n\`\`\`${lang}\n${code}\`\`\`\n\n`;
